@@ -13,6 +13,32 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
         return $(this).find(".checkbox-template").is(":checked");
       });
     };
+
+    const renderPlaceHolder = () => {
+      const capitalizeFirstLetter = (text) => {
+        return text.charAt(0).toUpperCase() + text.slice(1);
+      };
+
+      const truncateText = (text, maxLength = 20) => {
+        return text.length > maxLength ? text.slice(0, maxLength) + "..." : text;
+      };
+      
+
+      const textContents = getCheckedBoxes()
+        .find("span")
+        .get()
+        .map(c => c.textContent.trim()); // Capitalize first letter
+      
+        const result = dropdownWrapper.find('.checkbox-dropdown-placeholder')
+
+        if(textContents.length === 0) {
+          result.text(`Pick ${capitalizeFirstLetter(target)}`)
+        } else {
+          result.text(truncateText(textContents.join(', ')))
+        }
+    };
+    
+    
   
     const renderCollectionItems = (items) => {
       clearCheckboxes();
@@ -42,6 +68,8 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
   
           checkBox.on("change", () => {
             getOption.prop("selected", !getOption.prop("selected"));
+            
+      renderPlaceHolder()
           });
   
           checkBox.prop("checked", getOption.prop("selected"));
