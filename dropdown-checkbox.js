@@ -49,6 +49,10 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
           items.length === 0 ? `Search for "${searchFor}"` : ""
         }`
       );
+
+    const languageFilter = (item) => {
+        return !target === 'languages' && ['swahili', 'chinese', 'japanese'].includes(item)
+    }
   
       items
         .filter(
@@ -58,6 +62,7 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
               .get()
               .includes(item.slug)
         )
+        .filter(languageFilter)
         .forEach((item) => {
           const cloneField = checkboxTemplate.clone();
           const checkBox = cloneField.find('input[type="checkbox"]');
