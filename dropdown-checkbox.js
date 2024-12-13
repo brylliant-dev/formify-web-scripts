@@ -51,7 +51,7 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
       );
 
     const languageFilter = (item) => {
-        return !(target === 'languages' && ['swahili', 'chinese', 'japanese'].includes(item))
+        return !(target === 'languages' && ['swahili', 'chinese', 'japanese'].includes(item.slug))
     }
   
       items
