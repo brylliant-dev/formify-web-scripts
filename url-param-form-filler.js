@@ -25,19 +25,21 @@ const paramNames = [
 const extractedParams = getUrlParameters(paramNames);
 
 const fieldIds = {
-  formifyRequestId: 'formify-request-id',
-  companyName: 'company-name',
-  country: 'country',
-  city: 'city',
-  firstName: 'first-name',
-  lastName: 'last-name',
-  email: 'email',
-  phone: 'phone',
+  formifyRequestId: ['formify-request-id'],
+  companyName: ['company-name', 'agency-name'],
+  country: ['country'],
+  city: ['city'],
+  firstName: ['first-name'],
+  lastName: ['last-name'],
+  email: ['email'],
+  phone: ['phone'],
 };
 
 // Use jQuery to populate the fields
 $.each(extractedParams, (key, value) => {
   if (value) {
-    $(`#${fieldIds[key]}`).val(value);
+    fieldIds[key].forEach(id => {
+      $(`#${id}`).val(value);
+    })
   }
 });
