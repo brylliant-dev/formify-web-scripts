@@ -32,7 +32,7 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
         const result = dropdownWrapper.find('.checkbox-dropdown-placeholder')
 
         if(textContents.length === 0) {
-          result.text(`Pick ${capitalizeFirstLetter(target)}`)
+          result.text(target === 'languages' ? 'Additional languages ​​we can communicate in' : `Pick ${capitalizeFirstLetter(target)}`)
         } else {
           result.text(truncateText(textContents.join(', ')))
         }
