@@ -62,6 +62,7 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
             .includes(item.slug),
       )
       .filter(languageFilter)
+      .sort((a, b) => a.localeCompare(b))
       .forEach((item) => {
         const cloneField = checkboxTemplate.clone()
         const checkBox = cloneField.find('input[type="checkbox"]')
