@@ -1,7 +1,7 @@
 const runFieldPopulate = ({ target, items, searchFor }) => {
   const dropdownWrapper = $(`#checkbox-dropdown-wrapper-${target}`)
   const dropdownList = dropdownWrapper.find(`#checkbox-dropdown-list-${target}`)
-  const checkboxTemplate = dropdownList.find(`#checkbox-field-template`)
+  const checkboxTemplate = dropdownList.find(`#checkbox-field-template-${target}`)
   const multiSelectField = $(`#${target}`)
   const multiSelectOptions = multiSelectField.find("option")
   const resultLabel = dropdownWrapper.find(".checkbox-result-label")
