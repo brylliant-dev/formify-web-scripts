@@ -19,7 +19,7 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
       return text.charAt(0).toUpperCase() + text.slice(1)
     }
 
-    const truncateText = (text, maxLength = 20) => {
+    const truncateText = (text, maxLength = 60) => {
       return text.length > maxLength ? text.slice(0, maxLength) + "..." : text
     }
 
