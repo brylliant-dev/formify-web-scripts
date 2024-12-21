@@ -48,13 +48,6 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
       }`
     );
 
-    const languageFilter = (item) => {
-      return !(
-        target === "languages" &&
-        ["swahili", "chinese", "japanese"].includes(item.slug)
-      );
-    };
-
     items
       .filter(
         (item) =>
@@ -63,7 +56,6 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
             .get()
             .includes(item.slug)
       )
-      .filter(languageFilter)
       .sort((a, b) => a.slug.localeCompare(b.slug))
       .forEach((item) => {
         const cloneField = checkboxTemplate.clone();
@@ -101,20 +93,22 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
   renderCollectionItems(items);
 };
 
-const callFn = async ({ target, searchFor = "" }) => {
+const callFn = async ({ target, searchFor }) => {
   const itemsRaw = document
     .querySelector(`#code-block-wrapper .${target}-collection-list`)
     .querySelectorAll(`.${target}-collection-item`);
   const items = Array.from(itemsRaw)
     .map((li) => JSON.parse(li.textContent))
     .filter(({ name, slug }) => {
-      const validator = [name, slug].some((l) =>
-        new RegExp(searchFor.toLowerCase().replace(/\*/g, ".*")).test(
-          l.toLowerCase()
+      return (
+        !searchFor ||
+        searchFor === "" ||
+        [name, slug].some((l) =>
+          new RegExp(searchFor.toLowerCase().replace(/\*/g, ".*")).test(
+            l.toLowerCase()
+          )
         )
       );
-
-      return searchFor === "" || validator;
     });
 
   runFieldPopulate({
@@ -124,22 +118,10 @@ const callFn = async ({ target, searchFor = "" }) => {
   });
 };
 
-callFn({ target: "languages" });
 callFn({ target: "services" });
 
-const searchFieldLanguages = $("#search-field-languages");
 const searchFieldServices = $("#search-field-services");
-
-let debounceTimerLanguages;
 let debounceTimerServices;
-
-// For the "Languages" field
-searchFieldLanguages.on("keyup", (e) => {
-  clearTimeout(debounceTimerLanguages); // Clear any existing timer
-  debounceTimerLanguages = setTimeout(() => {
-    callFn({ target: "languages", searchFor: e.target.value ?? "" });
-  }, 500); // 500ms debounce
-});
 
 // For the "Services" field
 searchFieldServices.on("keyup", (e) => {
