@@ -116,8 +116,7 @@ const callFn = async ({ target, searchFor }) => {
   })
 }
 
-setTimeout(() => {
-  callFn({ target: "services" })
+setTimeout(() => callFn({ target: "services" }), 300)
 
   const searchFieldServices = $("#search-field-services")
   let debounceTimerServices
@@ -129,4 +128,3 @@ setTimeout(() => {
       callFn({ target: "services", searchFor: e.target.value ?? "" })
     }, 500) // 500ms debounce
   })
-}, 300)
