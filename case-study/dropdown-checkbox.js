@@ -40,7 +40,7 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
         const slugs = getCheckedBoxes()
         .find("span")
         .get()
-        .map((c) => c.attr('for').trim()) // Capitalize first letter
+        .map((c) => c.getAttribute('for').trim()) // Capitalize first letter
 
         servicesTextField.attr('value', slugs.join(", "))
     }
