@@ -37,12 +37,12 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
     }
 
     const modifyServicesTextField = () => {
-        const textContents = getCheckedBoxes()
+        const slugs = getCheckedBoxes()
         .find("span")
         .get()
-        .map((c) => c.textContent.trim()) // Capitalize first letter
+        .map((c) => c.attr('for').trim()) // Capitalize first letter
 
-        servicesTextField.attr('value', textContents.join(", "))
+        servicesTextField.attr('value', slugs.join(", "))
     }
   
     const renderCollectionItems = (items) => {
