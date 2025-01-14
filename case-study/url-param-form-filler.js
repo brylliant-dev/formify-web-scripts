@@ -19,16 +19,18 @@ const fieldIds = {
   agencyId: ['agency-id'],
 };
 
-// Check if agencyId exists, if not redirect to home
-if (!extractedParams.agencyId) {
-  window.location.href = '/'; // Redirect to home page
-} else {
-  // Use jQuery to populate the fields
-  $.each(extractedParams, (key, value) => {
-    if (value) {
-      fieldIds[key].forEach((id) => {
-        $(`#${id}`).val(value);
-      });
-    }
-  });
-}
+setTimeout(() => {
+  // Check if agencyId exists, if not redirect to home
+  if (!extractedParams.agencyId) {
+    window.location.href = '/'; // Redirect to home page
+  } else {
+    // Use jQuery to populate the fields
+    $.each(extractedParams, (key, value) => {
+      if (value) {
+        fieldIds[key].forEach((id) => {
+          $(`#${id}`).val(value);
+        });
+      }
+    });
+  } 
+}, 200)
