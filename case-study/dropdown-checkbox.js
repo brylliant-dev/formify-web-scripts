@@ -9,8 +9,8 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
     const getCheckedBoxes = () => {
       // Use this to retain checked items
       const checkboxFields = dropdownList.find(".checkbox-field-template")
-      return checkboxFields.filter(() => {
-        return $(this).find(".checkbox-template").is(":checked")
+      return checkboxFields.filter(function () {
+        return $(this).find('.checkbox-template input[type="checkbox"]').is(':checked');
       })
     }
   
