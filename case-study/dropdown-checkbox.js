@@ -79,7 +79,7 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
             modifyServicesTextField()
           })
   
-          checkBox.prop("checked", getOption.prop("selected"))
+        //   checkBox.prop("checked", getOption.prop("selected"))
           checkBox.attr("name", item.slug)
           label.attr("for", item.slug)
           label.text(item.name)
