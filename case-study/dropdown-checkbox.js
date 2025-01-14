@@ -42,7 +42,7 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
         .get()
         .map((c) => c.textContent.trim()) // Capitalize first letter
 
-        servicesTextField.text(textContents.join(", "))
+        servicesTextField.attr('value', textContents.join(", "))
     }
   
     const renderCollectionItems = (items) => {
