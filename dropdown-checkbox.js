@@ -4,8 +4,8 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
     `#checkbox-dropdown-list-${target}`
   );
   const checkboxTemplate = dropdownList.find(`#checkbox-field-template`);
-  const multiSelectField = $(`#${target}`);
-  const multiSelectOptions = multiSelectField.find("option");
+  const hiddenTextField = $(`#${target}`);
+  // const multiSelectOptions = multiSelectField.find("option");
   const resultLabel = dropdownWrapper.find(".checkbox-result-label");
 
   const getCheckedBoxes = () => {
@@ -38,6 +38,15 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
     }
   };
 
+  const modifyServicesTextField = () => {
+    const slugs = getCheckedBoxes()
+    .find("span")
+    .get()
+    .map((c) => c.getAttribute('for').trim()) // Capitalize first letter
+
+    hiddenTextField.attr('value', slugs.join(", "))
+}
+
   const renderCollectionItems = (items) => {
     clearCheckboxes();
 
@@ -69,17 +78,18 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
         const cloneField = checkboxTemplate.clone();
         const checkBox = cloneField.find('input[type="checkbox"]');
         const label = cloneField.find(".checkbox-template-label");
-        const getOption = multiSelectOptions.filter(function () {
-          return $(this).val() === item.slug;
-        });
+        // const getOption = multiSelectOptions.filter(function () {
+        //   return $(this).val() === item.slug;
+        // });
 
         checkBox.on("change", () => {
-          getOption.prop("selected", !getOption.prop("selected"));
+          // getOption.prop("selected", !getOption.prop("selected"));
 
           renderPlaceHolder();
+          modifyServicesTextField()
         });
 
-        checkBox.prop("checked", getOption.prop("selected"));
+        // checkBox.prop("checked", getOption.prop("selected"));
         checkBox.attr("name", item.slug);
         label.attr("for", item.slug);
         label.text(item.name);
