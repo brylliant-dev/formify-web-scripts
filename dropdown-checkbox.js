@@ -146,7 +146,7 @@ setTimeout(() => {
   });
   
   // For the "Services" field
-  searchFieldLanguages.on("keyup", (e) => {
+  searchFieldServices.on("keyup", (e) => {
     clearTimeout(debounceTimerServices); // Clear any existing timer
     debounceTimerServices = setTimeout(() => {
       callFn({ target: "services", searchFor: e.target.value ?? "" });
