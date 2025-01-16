@@ -112,10 +112,8 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
 };
 
 const callFn = async ({ target, searchFor = "" }) => {
-  const itemsRaw = document
-    .querySelector(`#code-block-wrapper .${target}-collection-list`)
-    .querySelectorAll(`.${target}-collection-item`);
-  const items = Array.from(itemsRaw)
+  const itemsRaw = $(`#code-block-wrapper .${target}-collection-list`).last().find(`.${target}-collection-item`)
+  const items = itemsRaw.get()
     .map((li) => JSON.parse(li.textContent))
     .filter(({ name, slug }) => {
       const validator = [name, slug].some((l) =>
@@ -143,5 +141,13 @@ searchFieldLanguages.on("keyup", (e) => {
   clearTimeout(debounceTimerLanguages); // Clear any existing timer
   debounceTimerLanguages = setTimeout(() => {
     callFn({ target: "languages", searchFor: e.target.value ?? "" });
+  }, 500); // 500ms debounce
+});
+
+// For the "Services" field
+searchFieldLanguages.on("keyup", (e) => {
+  clearTimeout(debounceTimerServices); // Clear any existing timer
+  debounceTimerServices = setTimeout(() => {
+    callFn({ target: "services", searchFor: e.target.value ?? "" });
   }, 500); // 500ms debounce
 });
