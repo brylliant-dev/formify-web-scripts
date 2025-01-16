@@ -153,5 +153,5 @@
     }, 500); // 500ms debounce
   });
 
-  callFn({ target: "services", searchFor: e.target.value ?? "" });
-  callFn({ target: "languages", searchFor: e.target.value ?? "" });
+  callFn({ target: "services", searchFor: "" });
+  callFn({ target: "languages", searchFor: "" });
