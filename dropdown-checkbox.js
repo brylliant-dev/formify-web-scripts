@@ -153,5 +153,7 @@
     }, 500); // 500ms debounce
   });
 
+setTimeout(() => {
   callFn({ target: "services", searchFor: "" });
   callFn({ target: "languages", searchFor: "" });
+}, 500);
