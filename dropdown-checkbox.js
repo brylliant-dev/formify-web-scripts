@@ -1,4 +1,4 @@
-setTimeout(() => {
+
   const runFieldPopulate = ({ target, items, searchFor }) => {
     const dropdownWrapper = $(`#checkbox-dropdown-wrapper-${target}`);
     const dropdownList = dropdownWrapper.find(
@@ -152,4 +152,6 @@ setTimeout(() => {
       callFn({ target: "services", searchFor: e.target.value ?? "" });
     }, 500); // 500ms debounce
   });
-}, 500)
+
+  callFn({ target: "services", searchFor: e.target.value ?? "" });
+  callFn({ target: "languages", searchFor: e.target.value ?? "" });
