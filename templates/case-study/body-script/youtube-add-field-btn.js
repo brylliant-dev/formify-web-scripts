@@ -20,7 +20,11 @@ $('.agency_content_main_contact').on('click', function(){
 
   /**
    * 
-   * In Between should be the Case Study and Agency ID (from CMS items)
+   * In Between should be the Case Study and Agency ID (from CMS items backup code)
+   * 
+   * Look for this in Webflow custom code on top of the import:
+   * 
+   * 	$('#case-study_update')[0].href += '?agencyId=| Agency: Agency ID |&studyId=| Case Study ID |'
    * 
    */
 

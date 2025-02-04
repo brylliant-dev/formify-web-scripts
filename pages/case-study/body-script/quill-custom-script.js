@@ -16,7 +16,9 @@ const quill = new Quill('#editor', {
   theme: 'snow'
 });
 
-const quillForm = document.querySelector('#wf-form-Case-Study');
+const quillFormId = '#wf-form-Case-Study'
+
+const quillForm = document.querySelector(quillFormId);
 quillForm.onsubmit = function() {
   // Populate hidden form on submit
   const about = document.querySelector('textarea[name=description]');
