@@ -41,7 +41,7 @@ Webflow.push(function () {
   }
 
   function showForm() {
-    form.style.display = 'grid'
+    form.style.display = ''
     hideError()
   }
 
