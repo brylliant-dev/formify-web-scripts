@@ -125,7 +125,7 @@ Webflow.push(function () {
   const form = document.getElementById(formElementId)
   let failureMessage = document.getElementById('error-message')
   let successMessage = document.getElementById('success-message')
-  let requestTimeout = 30000 // 30 seconds timeout
+  let requestTimeout = 1000 // 30 seconds timeout
   let errorMessageTimedOut = 'Oops! Seems this timed out. Please try again.'
   let errorMessage = 'Oops! Something went wrong. Please try again.'
 
