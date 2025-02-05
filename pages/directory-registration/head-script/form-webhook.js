@@ -60,7 +60,7 @@ Webflow.push(function () {
   }
 
   function showForm() {
-    form.style.display = 'block';
+    form.style.display = 'grid';
     hideError();
   }
 
