@@ -2,6 +2,7 @@ var Webflow = Webflow || [];
 Webflow.push(function () {
 
     const formElementId = 'wf-form-Partner-Program-2'
+    const agencyLogoName = 'Agency-Logo'
 
 // Replace with your form ID
   const form = document.getElementById(formElementId);
@@ -81,8 +82,9 @@ Webflow.push(function () {
     let formData = new FormData(event.target);
 
     // Validate that the file input has a file
-    const fileInput = event.target.querySelector('input[name="Agency-Logo"]');
-    if (!fileInput.files.length) {
+    // `fileUploadSkip` constant is shared from `auto-fill-case-study-form.js`, remember to copy/move this file with it
+    const fileInput = event.target.querySelector(`input[name="${agencyLogoName}"]`);
+    if (!fileInput.files.length && !fileUploadSkip) {
       displayError('Please upload a file.');
       return;
     }
