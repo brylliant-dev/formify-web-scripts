@@ -70,6 +70,7 @@ const sendAgencyId = (agencyId) => {
       $('input#first-name').attr('value', data?.firstName)
       $('input#last-name').attr('value', data?.lastName)
       $('input#email').attr('value', data?.email)
+      $('input#email-orig').attr('value', data?.email)
       $('input#phone').attr('value', data?.phoneNumber)
       $('input#company-name').attr('value', data?.companyName)
       $('input#Agency-URL').attr('value', data?.agencyUrl)
