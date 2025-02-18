@@ -103,7 +103,11 @@
   
     const clearCheckboxes = () => {
       const remainingBoxes = getCheckedBoxes();
-      dropdownList.empty().append(checkboxTemplate);
+      const othersFieldWrapper = $('#others-field-wrapper')
+      console.log('othersFieldWrapper', othersFieldWrapper)
+
+      dropdownList.empty().append(checkboxTemplate).append(othersFieldWrapper);
+      console.log('dropdownList emptied')
       remainingBoxes.each(function () {
         dropdownList.append($(this));
       });
