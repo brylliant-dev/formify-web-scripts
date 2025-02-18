@@ -5,7 +5,7 @@
       `#checkbox-dropdown-list-${target}`
     );
     
-    const othersFieldWrapper = $('#others-field-wrapper')
+    const othersFieldWrapper = $(`#others-field-wrapper-${target}`)
     console.log('othersFieldWrapper', othersFieldWrapper)
     const checkboxTemplate = dropdownList.find(`#checkbox-field-template`);
     const hiddenTextField = $(`#${target}`);
