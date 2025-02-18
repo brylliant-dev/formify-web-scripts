@@ -122,16 +122,11 @@
       dropdownList.empty()
       
       dropdownList.append(checkboxTemplate)
-      remainingBoxes.each(function () {
-        dropdownList.append($(this));
-      });
+      remainingBoxes.each(() => dropdownList.append($(this)));
       
       setTimeout(() => {
         dropdownList.append(othersFieldWrapper);
-
-        setTimeout(() => {
-          runCheckboxListener();
-        }, 200)
+        setTimeout(() => runCheckboxListener(), 100)
       }, 100)
     };
   
