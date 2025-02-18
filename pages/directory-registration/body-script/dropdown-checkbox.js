@@ -107,17 +107,17 @@
     const clearCheckboxes = () => {
       const debugMode = true
       if(debugMode) return 
-      
+
       const remainingBoxes = getCheckedBoxes();
 
       dropdownList.empty()
       
       dropdownList.append(checkboxTemplate)
-      dropdownList.append(othersFieldWrapper);
-      console.log('dropdownList emptied')
       remainingBoxes.each(function () {
         dropdownList.append($(this));
       });
+      
+      dropdownList.append(othersFieldWrapper);
     };
   
     renderCollectionItems(items);
