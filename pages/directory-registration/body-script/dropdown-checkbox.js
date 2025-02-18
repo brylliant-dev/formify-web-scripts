@@ -15,7 +15,7 @@
         const isChecked = csvServiceCheckbox.prop('checked')
 
         if(csvServiceField) {
-          csvServiceField.val()
+          csvServiceField.val('')
         }
         
         csvServiceField[isChecked ? 'show' : 'hide']()
