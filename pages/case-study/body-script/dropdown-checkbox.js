@@ -5,6 +5,24 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
     const servicesTextField = $(`#${target}`)
     // const multiSelectOptions = multiSelectField.find("option")
     const resultLabel = dropdownWrapper.find(".checkbox-result-label")
+
+    const runCheckboxListener = () => {
+      const csvServiceCheckbox = $('#csv-service-checkbox')
+      const csvServiceField = $('#csv-service-field')
+
+      csvServiceCheckbox.removeAttr('checked')
+  
+      csvServiceCheckbox.on('click', () => {
+        const isChecked = csvServiceCheckbox.prop('checked')
+
+        if(csvServiceField) {
+          csvServiceField.val('')
+        }
+        
+        csvServiceField[isChecked ? 'show' : 'hide']()
+      });
+    }
+    
   
     const getCheckedBoxes = () => {
       // Use this to retain checked items
@@ -92,10 +110,15 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
   
     const clearCheckboxes = () => {
       const remainingBoxes = getCheckedBoxes()
-      dropdownList.empty().append(checkboxTemplate)
-      remainingBoxes.each(function () {
-        dropdownList.append($(this))
-      })
+      dropdownList.empty()
+      dropdownList.append(checkboxTemplate)
+
+      remainingBoxes.each(() => dropdownList.append($(this)))
+
+      setTimeout(() => {
+        dropdownList.append(othersFieldWrapper);
+        setTimeout(() => runCheckboxListener(), 100)
+      }, 100)
     }
   
     renderCollectionItems(items)
