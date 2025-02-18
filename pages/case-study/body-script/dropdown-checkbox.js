@@ -6,6 +6,8 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
     // const multiSelectOptions = multiSelectField.find("option")
     const resultLabel = dropdownWrapper.find(".checkbox-result-label")
 
+    const othersFieldWrapper = $(`#others-field-wrapper-${target}`)
+
     const runCheckboxListener = () => {
       const csvServiceCheckbox = $('#csv-service-checkbox')
       const csvServiceField = $('#csv-service-field')
