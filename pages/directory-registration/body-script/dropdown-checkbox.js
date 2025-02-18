@@ -105,9 +105,6 @@
     };
   
     const clearCheckboxes = () => {
-      const debugMode = true
-      if(debugMode) return 
-
       const remainingBoxes = getCheckedBoxes();
 
       dropdownList.empty()
