@@ -114,7 +114,9 @@
         dropdownList.append($(this));
       });
       
-      dropdownList.append(othersFieldWrapper);
+      setTimeout(() => {
+        dropdownList.append(othersFieldWrapper);
+      }, 100)
     };
   
     renderCollectionItems(items);
