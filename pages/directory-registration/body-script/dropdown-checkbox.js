@@ -12,13 +12,11 @@
       csvServiceCheckbox.on('click', () => {
         const isChecked = csvServiceCheckbox.prop('checked')
         
-        console.log(isChecked ? 'Checked' : 'Unchecked');
         csvServiceField[isChecked ? 'show' : 'hide']()
       });
     }
     
     const othersFieldWrapper = $(`#others-field-wrapper-${target}`)
-    console.log('othersFieldWrapper', othersFieldWrapper)
     const checkboxTemplate = dropdownList.find(`#checkbox-field-template`);
     const hiddenTextField = $(`#${target}`);
     // const multiSelectOptions = multiSelectField.find("option");
