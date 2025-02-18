@@ -4,6 +4,9 @@
     const dropdownList = dropdownWrapper.find(
       `#checkbox-dropdown-list-${target}`
     );
+    
+    const othersFieldWrapper = $('#others-field-wrapper')
+    console.log('othersFieldWrapper', othersFieldWrapper)
     const checkboxTemplate = dropdownList.find(`#checkbox-field-template`);
     const hiddenTextField = $(`#${target}`);
     // const multiSelectOptions = multiSelectField.find("option");
@@ -103,12 +106,8 @@
   
     const clearCheckboxes = () => {
       const remainingBoxes = getCheckedBoxes();
-      const othersFieldWrapper = $('#others-field-wrapper')
-      console.log('othersFieldWrapper', othersFieldWrapper)
 
-      dropdownList.empty()
-      dropdownList.append(checkboxTemplate)
-      dropdownList.append(othersFieldWrapper);
+      dropdownList.empty().append(checkboxTemplate).append(othersFieldWrapper);
       console.log('dropdownList emptied')
       remainingBoxes.each(function () {
         dropdownList.append($(this));
