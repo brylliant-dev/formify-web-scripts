@@ -13,6 +13,10 @@
   
       csvServiceCheckbox.on('click', () => {
         const isChecked = csvServiceCheckbox.prop('checked')
+
+        if(csvServiceField) {
+          csvServiceField.val()
+        }
         
         csvServiceField[isChecked ? 'show' : 'hide']()
       });
