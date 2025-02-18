@@ -8,6 +8,8 @@
     const runCheckboxListener = () => {
       const csvServiceCheckbox = $('#csv-service-checkbox')
       const csvServiceField = $('#csv-service-field')
+
+      csvServiceCheckbox.removeAttr('checked')
   
       csvServiceCheckbox.on('click', () => {
         const isChecked = csvServiceCheckbox.prop('checked')
