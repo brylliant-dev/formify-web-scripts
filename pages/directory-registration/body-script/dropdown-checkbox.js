@@ -4,6 +4,17 @@
     const dropdownList = dropdownWrapper.find(
       `#checkbox-dropdown-list-${target}`
     );
+
+    const csvServiceCheckbox = $('#csv-service-checkbox')
+    const csvServiceField = $('#csv-service-field')
+
+    csvServiceCheckbox.on('click', () => {
+      const isChecked = csvServiceCheckbox.prop('checked')
+      
+      console.log(isChecked ? 'Checked' : 'Unchecked');
+      csvServiceField[isChecked ? 'show' : 'hide']()
+    });
+    
     
     const othersFieldWrapper = $(`#others-field-wrapper-${target}`)
     console.log('othersFieldWrapper', othersFieldWrapper)
