@@ -129,7 +129,9 @@
       setTimeout(() => {
         dropdownList.append(othersFieldWrapper);
 
-        runCheckboxListener();
+        setTimeout(() => {
+          runCheckboxListener();
+        }, 200)
       }, 100)
     };
   
