@@ -14,6 +14,7 @@ const runFieldPopulate = ({ target, items, searchFor }) => {
   
       csvServiceCheckbox.on('click', () => {
         const isChecked = csvServiceCheckbox.prop('checked')
+        console.log('clicked')
 
         if(csvServiceField) {
           csvServiceField.val('')
