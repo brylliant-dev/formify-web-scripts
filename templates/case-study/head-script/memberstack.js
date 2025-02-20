@@ -1,6 +1,6 @@
-const memberstack = window.$memberstackDom
+const checkMember = async () => {
+  const memberstack = window.$memberstackDom
 
-const checkMember = async () =>
   await memberstack.getCurrentMember().then((r) => {
     if (!r.data?.id) {
       window.location.href = "/"
@@ -33,5 +33,6 @@ const checkMember = async () =>
       //console.log("Logged-in Memberstack ID:", loggedInMemberstackId);
     }
   })
+}
 
 checkMember()
