@@ -88,6 +88,11 @@ const sendAgencyId = (agencyId) => {
         $(`input[name=${slug}]`).click()
       })
 
+      const addFieldButton = $('#add-field-button')
+
+      const sixArray = [1, 2, 3, 4, 5, 6]
+      const clientLogos = data?.clientLogos
+
       if (data?.agencyLogo && data?.agencyLogo !== '') {
         const imgPreview = $('#img-upload')
         const inputImage = $(`input${agencyLogoImage}`)
@@ -100,9 +105,19 @@ const sendAgencyId = (agencyId) => {
         fileUploadSkip = true
       }
 
-      const addFieldButton = $('#add-field-button')
+      if(clientLogos && clientLogos.length > 0) {
+        for(let i = 0; i < clientLogos.length; i++) {
+          const num = i + 1
 
-      const sixArray = [1, 2, 3, 4, 5, 6]
+          const imgPreview = $(`#img-upload-${num}`)
+          const inputImage = $(`input#client-logo-${num}`)
+          imgPreview.attr('src', clientLogos[num]) // Assign the Base64 result to src
+          imgPreview.show() // Ensure the image is visible
+          inputImage.removeAttr('required')
+          inputImage.attr('data-image-url', clientLogos[num])
+          $(`#file-upload-wrapper-${num}`).removeClass('hide')
+        }
+      }
 
       sixArray.forEach((num) => {
         if (data?.[`youtubeVideo${num}`]) {
