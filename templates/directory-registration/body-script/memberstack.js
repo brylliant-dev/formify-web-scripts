@@ -1,7 +1,7 @@
-const memberstack = window.$memberstackDom
+const checkMember = async () => {
+  const memberstack = window.$memberstackDom
 
-const checkMember = async () =>
-  await memberstack.getCurrentMember().then((r) => {
+    await memberstack.getCurrentMember().then((r) => {
     if (r.data?.id) {
     const caseStudyButton = document.getElementById('case-study_add-wrapper');
 
@@ -22,5 +22,8 @@ const checkMember = async () =>
     //console.log("Logged-in Memberstack ID:", loggedInMemberstackId);
     }
   })
+}
+
+
 
 checkMember()
