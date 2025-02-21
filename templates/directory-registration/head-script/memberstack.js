@@ -20,11 +20,11 @@ const checkMember = async () => {
       if (cmsMemberstackId === loggedInMemberstackId) {
         caseStudyButton.style.display = "block"
         editAgencyButton.style.display = "block"
+        agencyContentTag.classList.add('ml-16')
         //console.log("IDs match. Showing button");
 
       } else {
         //caseStudyButton.style.display = 'none';
-        agencyContentTag.classList.remove('ml-16')
         caseStudyButton.remove()
         editAgencyButton.remove()
         //console.log("IDs do not match...");
