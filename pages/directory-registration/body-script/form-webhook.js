@@ -63,7 +63,7 @@ Webflow.push(function () {
 
     // Validate that the file input has a file
     const fileInput = event.target.querySelector(
-      `input[name="${caseStudyImageName}"]`,
+      `input[name="${agencyLogoName}"]`,
     )
 
     // `fileUploadSkip` constant is shared from `auto-fill-case-study-form.js`, remember to copy/move this file with it
