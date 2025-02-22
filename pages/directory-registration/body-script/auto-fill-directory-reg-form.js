@@ -2,18 +2,16 @@ let fileUploadSkip = false // This variable is shared to `form-webhook.js`, reme
 
 const agencyLogoImage = '#Agency-Logo'
 
-const showLoadingGif = () => {
-  $('.section-partner-hero').hide()
-  $('#loading-svg-section').show()
-}
-
-const hideLoadingGif = () => {
-  $('.section-partner-hero').show()
-  $('#loading-svg-section').hide()
-}
-
 $(agencyLogoImage).on('change', (event) => {
-
+  const showLoadingGif = () => {
+    $('.section-partner-hero').hide()
+    $('#loading-svg-section').show()
+  }
+  
+  const hideLoadingGif = () => {
+    $('.section-partner-hero').show()
+    $('#loading-svg-section').hide()
+  }
 
   const file = event.target.files[0]
   if (file) {
