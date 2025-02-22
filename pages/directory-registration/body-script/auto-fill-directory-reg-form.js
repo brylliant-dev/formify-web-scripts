@@ -3,16 +3,6 @@ let fileUploadSkip = false // This variable is shared to `form-webhook.js`, reme
 const agencyLogoImage = '#Agency-Logo'
 
 $(agencyLogoImage).on('change', (event) => {
-  const showLoadingGif = () => {
-    $('.section-partner-hero').hide()
-    $('#loading-svg-section').show()
-  }
-  
-  const hideLoadingGif = () => {
-    $('.section-partner-hero').show()
-    $('#loading-svg-section').hide()
-  }
-
   const file = event.target.files[0]
   if (file) {
     const reader = new FileReader()
@@ -36,6 +26,15 @@ const getQueryParam = (param) => {
 
 // Function to send the POST request
 const sendAgencyId = (agencyId) => {
+  const showLoadingGif = () => {
+    $('.section-partner-hero').hide()
+    $('#loading-svg-section').show()
+  }
+  
+  const hideLoadingGif = () => {
+    $('.section-partner-hero').show()
+    $('#loading-svg-section').hide()
+  }
   // Create a FormData object
   const formData = new FormData()
   formData.append('agency-id', agencyId) // Add the agency-id from the URL params
