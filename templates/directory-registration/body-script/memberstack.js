@@ -33,7 +33,7 @@ const checkMember = async () => {
     if (!r.data?.id) {
       window.location.href = "/"
     } else {
-      const caseStudyButton = document.getElementById("case-study_update-wrapper")
+      const caseStudyButton = document.getElementById("case-study_add-wrapper")
 
       const agencyContentTag = document.getElementById("agency_content_tag")
       const editAgencyButton = document.getElementById("edit-agency-button")
