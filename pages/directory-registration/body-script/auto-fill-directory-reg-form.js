@@ -108,10 +108,10 @@ const sendAgencyId = (agencyId) => {
 
           const imgPreview = $(`#img-upload-${num}`)
           const inputImage = $(`input#client-logo-${num}`)
-          imgPreview.attr('src', clientLogos[num]) // Assign the Base64 result to src
+          imgPreview.attr('src', clientLogos[i]) // Assign the Base64 result to src
           imgPreview.show() // Ensure the image is visible
           inputImage.removeAttr('required')
-          inputImage.attr('data-image-url', clientLogos[num])
+          inputImage.attr('data-image-url', clientLogos[i])
           $(`#file-upload-wrapper-${num}`).removeClass('hide')
         }
       }
