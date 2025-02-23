@@ -142,8 +142,10 @@ const sendAgencyId = (agencyId) => {
           const fileUploadRemove = $(`#file-upload-group-${num} .w-icon-file-upload-remove`)
 
           if(isChecked){
-            fileUploadRemove.click()
-            fileUploadWrapper.hide()
+            setTimeout(() => {
+              fileUploadRemove.click()
+              fileUploadWrapper.hide()
+            }, 100)
           }
         })
       });
