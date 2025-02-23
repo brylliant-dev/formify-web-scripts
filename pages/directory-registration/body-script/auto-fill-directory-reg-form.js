@@ -139,7 +139,7 @@ const sendAgencyId = (agencyId) => {
 
         removeCheckbox.on('change', (event) => {
           const isChecked = event.target.isChecked
-          const fileUploadRemove = $(`file-upload-group-${num} w-icon-file-upload-remove`)
+          const fileUploadRemove = $(`#file-upload-group-${num} .w-icon-file-upload-remove`)
 
           if(isChecked){
             fileUploadRemove.click()
