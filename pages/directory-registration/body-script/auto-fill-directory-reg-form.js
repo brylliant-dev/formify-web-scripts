@@ -119,8 +119,10 @@ const sendAgencyId = (agencyId) => {
       sixArray.forEach((num) => {
         const imgPreview = $(`#img-upload-${num}`)
         const inputImage = $(`input#client-logo-${num}`)
+        const removeCheckbox = $(`input#checkbox-remove-${num}`)
+        const fileUploadWrapper = $(`#file-upload-wrapper-${num}`)
 
-        $(inputImage).on('change', (event) => {
+        inputImage.on('change', (event) => {
           const file = event.target.files[0]
           if (file) {
             const reader = new FileReader()
@@ -128,10 +130,20 @@ const sendAgencyId = (agencyId) => {
             reader.onload = (e) => {
               imgPreview.attr('src', e.target.result) // Assign the Base64 result to src
               imgPreview.show() // Ensure the image is visible
-              $(`#file-upload-wrapper-${num}`).removeClass('hide')
+              fileUploadWrapper.removeClass('hide')
             }
         
             reader.readAsDataURL(file) // Read the file as a Data URL
+          }
+        })
+
+        removeCheckbox.on('change', (event) => {
+          const isChecked = event.target.isChecked
+          const fileUploadRemove = $(`file-upload-group-${num} w-icon-file-upload-remove`)
+
+          if(isChecked){
+            fileUploadRemove.click()
+            fileUploadWrapper.hide()
           }
         })
       });
