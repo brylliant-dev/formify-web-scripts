@@ -117,6 +117,26 @@ const sendAgencyId = (agencyId) => {
       }
 
       sixArray.forEach((num) => {
+        const imgPreview = $(`#img-upload-${num}`)
+        const inputImage = $(`input#client-logo-${num}`)
+
+        $(inputImage).on('change', (event) => {
+          const file = event.target.files[0]
+          if (file) {
+            const reader = new FileReader()
+        
+            reader.onload = (e) => {
+              imgPreview.attr('src', e.target.result) // Assign the Base64 result to src
+              imgPreview.show() // Ensure the image is visible
+              $(`#file-upload-wrapper-${num}`).removeClass('hide')
+            }
+        
+            reader.readAsDataURL(file) // Read the file as a Data URL
+          }
+        })
+      });
+
+      sixArray.forEach((num) => {
         if (data?.[`youtubeVideo${num}`]) {
           if (num > 1) {
             addFieldButton.get()[0].click()
