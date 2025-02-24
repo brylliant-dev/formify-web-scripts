@@ -1,6 +1,7 @@
 let fileUploadSkip = false // This variable is shared to `form-webhook.js`, remember to copy/move this file with it
 
 const agencyLogoImage = '#Agency-Logo'
+const sixArray = [1, 2, 3, 4, 5, 6]
 
 $(agencyLogoImage).on('change', (event) => {
   const file = event.target.files[0]
@@ -17,6 +18,40 @@ $(agencyLogoImage).on('change', (event) => {
     reader.readAsDataURL(file) // Read the file as a Data URL
   }
 })
+
+sixArray.forEach((num) => {
+  const imgPreview = $(`#img-upload-${num}`)
+  const inputImage = $(`input#client-logo-${num}`)
+  const removeCheckbox = $(`input#checkbox-remove-${num}`)
+  const fileUploadWrapper = $(`#file-upload-wrapper-${num}`)
+
+  inputImage.on('change', (event) => {
+    const file = event.target.files[0]
+    if (file) {
+      const reader = new FileReader()
+  
+      reader.onload = (e) => {
+        imgPreview.attr('src', e.target.result) // Assign the Base64 result to src
+        imgPreview.show() // Ensure the image is visible
+        fileUploadWrapper.removeClass('hide')
+      }
+  
+      reader.readAsDataURL(file) // Read the file as a Data URL
+    }
+  })
+
+  removeCheckbox.on('change', (event) => {
+    const isChecked = event.target.checked
+    const fileUploadRemove = $(`#file-upload-group-${num} .w-icon-file-upload-remove`)
+
+    if(isChecked){
+      setTimeout(() => {
+        fileUploadRemove.click()
+        fileUploadWrapper.hide()
+      }, 100)
+    }
+  })
+});
 
 // Function to get URL parameters
 const getQueryParam = (param) => {
@@ -87,7 +122,6 @@ const sendAgencyId = (agencyId) => {
 
       const addFieldButton = $('#add-field-button')
 
-      const sixArray = [1, 2, 3, 4, 5, 6]
       const clientLogos = data?.clientLogos
 
       if (data?.agencyLogo && data?.agencyLogo !== '') {
@@ -115,40 +149,6 @@ const sendAgencyId = (agencyId) => {
           $(`#file-upload-wrapper-${num}`).removeClass('hide')
         }
       }
-
-      sixArray.forEach((num) => {
-        const imgPreview = $(`#img-upload-${num}`)
-        const inputImage = $(`input#client-logo-${num}`)
-        const removeCheckbox = $(`input#checkbox-remove-${num}`)
-        const fileUploadWrapper = $(`#file-upload-wrapper-${num}`)
-
-        inputImage.on('change', (event) => {
-          const file = event.target.files[0]
-          if (file) {
-            const reader = new FileReader()
-        
-            reader.onload = (e) => {
-              imgPreview.attr('src', e.target.result) // Assign the Base64 result to src
-              imgPreview.show() // Ensure the image is visible
-              fileUploadWrapper.removeClass('hide')
-            }
-        
-            reader.readAsDataURL(file) // Read the file as a Data URL
-          }
-        })
-
-        removeCheckbox.on('change', (event) => {
-          const isChecked = event.target.checked
-          const fileUploadRemove = $(`#file-upload-group-${num} .w-icon-file-upload-remove`)
-
-          if(isChecked){
-            setTimeout(() => {
-              fileUploadRemove.click()
-              fileUploadWrapper.hide()
-            }, 100)
-          }
-        })
-      });
 
       sixArray.forEach((num) => {
         if (data?.[`youtubeVideo${num}`]) {
