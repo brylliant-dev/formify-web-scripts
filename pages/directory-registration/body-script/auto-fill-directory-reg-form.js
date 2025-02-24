@@ -48,6 +48,7 @@ sixArray.forEach((num) => {
       setTimeout(() => {
         fileUploadRemove.click()
         fileUploadWrapper.hide()
+        removeCheckbox.click()
       }, 100)
     }
   })
