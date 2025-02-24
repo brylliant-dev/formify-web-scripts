@@ -34,6 +34,7 @@ sixArray.forEach((num) => {
         imgPreview.attr('src', e.target.result) // Assign the Base64 result to src
         imgPreview.show() // Ensure the image is visible
         fileUploadWrapper.removeClass('hide')
+        fileUploadWrapper.show()
       }
   
       reader.readAsDataURL(file) // Read the file as a Data URL
