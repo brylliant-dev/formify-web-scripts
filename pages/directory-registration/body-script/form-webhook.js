@@ -11,7 +11,7 @@ Webflow.push(function () {
 
     if(updateEmailField.val !== emailField.val()) {
       if(emailField.val() === ''){
-        displayError('Invalid email!')
+        displayError('Invalid email to be updated!')
         return
       }
 
