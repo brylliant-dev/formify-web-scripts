@@ -100,6 +100,7 @@ Webflow.push(function () {
     xhr.onloadstart = function () {
       showLoadingGif()
       console.log('Request started...')
+      updateMemberEmail()
     }
 
     // Update loading progress
@@ -120,8 +121,6 @@ Webflow.push(function () {
       if (xhr.status === 200) {
         let data = JSON.parse(xhr.responseText)
         console.log('Submission success:', data)
-
-        updateMemberEmail()
       } else {
         displayError(errorMessage)
       }
