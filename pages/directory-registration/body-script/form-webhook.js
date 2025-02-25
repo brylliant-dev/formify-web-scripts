@@ -16,7 +16,7 @@ Webflow.push(function () {
       }
 
       hiddenFormWrapper.show()
-      updateEmailField.val(emailField)
+      updateEmailField.val(emailField.val())
       updateEmailSubmit.click()
       hiddenFormWrapper.hide()
     }
