@@ -3,23 +3,9 @@ Webflow.push(function () {
   const formElementId = 'wf-form-Partner-Program-2'
   const agencyLogoName = 'Agency-Logo'
 
-  const updateMemberEmail = () => {
-    const hiddenFormWrapper = $('#hidden-form-wrapper')
-    const updateEmailField = $('#update-email-field')
-    const emailField = $('#email')
-    const updateEmailSubmit = $('#update-email-submit')
-
-    if(updateEmailField.val !== emailField.val()) {
-      if(emailField.val() === ''){
-        displayError('Invalid email to be updated!')
-        return
-      }
-
-      hiddenFormWrapper.show()
-      updateEmailField.val(emailField.val())
-      updateEmailSubmit.click()
-      hiddenFormWrapper.hide()
-    }
+  const hasAgencyId = () => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('agencyId');
   }
 
   const showLoadingGif = () => {
@@ -75,6 +61,27 @@ Webflow.push(function () {
     xhr.timeout = requestTimeout
   }
 
+  const updateMemberEmail = () => {
+    const hiddenFormWrapper = $('#hidden-form-wrapper')
+    const updateEmailField = $('#update-email-field')
+    const emailField = $('#email')
+    const updateEmailSubmit = $('#update-email-submit')
+
+    if(updateEmailField.val !== emailField.val()) {
+      if(emailField.val() === ''){
+        displayError('Invalid email to be updated!')
+        return
+      }
+
+      hiddenFormWrapper.show()
+      showForm()
+      updateEmailField.val(emailField.val())
+      updateEmailSubmit.click()
+      hideForm()
+      hiddenFormWrapper.hide()
+    }
+  }
+
   function triggerSubmit(event) {
     event.preventDefault() // Prevent default form submission
 
@@ -100,7 +107,6 @@ Webflow.push(function () {
     xhr.onloadstart = function () {
       showLoadingGif()
       console.log('Request started...')
-      updateMemberEmail()
     }
 
     // Update loading progress
@@ -121,6 +127,11 @@ Webflow.push(function () {
       if (xhr.status === 200) {
         let data = JSON.parse(xhr.responseText)
         console.log('Submission success:', data)
+        setTimeout(() => {
+          if(hasAgencyId()){
+            updateMemberEmail()
+          }
+        }, 100)
       } else {
         displayError(errorMessage)
       }
