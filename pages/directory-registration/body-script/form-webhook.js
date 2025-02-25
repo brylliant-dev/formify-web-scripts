@@ -116,7 +116,7 @@ Webflow.push(function () {
 
       if (xhr.status === 200) {
         let data = JSON.parse(xhr.responseText)
-        console.log('Success:', data)
+        console.log('Submission success:', data)
 
         updateMemberEmail()
       } else {
