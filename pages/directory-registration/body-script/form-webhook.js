@@ -4,6 +4,7 @@ Webflow.push(function () {
   const agencyLogoName = 'Agency-Logo'
 
   const updateMemberEmail = () => {
+    const hiddenFormWrapper = $('#hidden-form-wrapper')
     const updateEmailField = $('#update-email-field')
     const emailField = $('#email')
     const updateEmailSubmit = $('#update-email-submit')
@@ -14,8 +15,10 @@ Webflow.push(function () {
         return
       }
 
+      hiddenFormWrapper.show()
       updateEmailField.val(emailField)
       updateEmailSubmit.click()
+      hiddenFormWrapper.hide()
     }
   }
 
