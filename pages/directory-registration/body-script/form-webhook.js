@@ -3,6 +3,22 @@ Webflow.push(function () {
   const formElementId = 'wf-form-Partner-Program-2'
   const agencyLogoName = 'Agency-Logo'
 
+  const updateMemberEmail = () => {
+    const updateEmailField = $('#update-email-field')
+    const emailField = $('#email')
+    const updateEmailSubmit = $('#update-email-submit')
+
+    if(updateEmailField.val !== emailField.val()) {
+      if(emailField.val() === ''){
+        displayError('Invalid email!')
+        return
+      }
+
+      updateEmailField.val(emailField)
+      updateEmailSubmit.click()
+    }
+  }
+
   const showLoadingGif = () => {
     $('.section-partner-hero').hide()
     $('#loading-svg-section').show()
@@ -59,20 +75,6 @@ Webflow.push(function () {
   function triggerSubmit(event) {
     event.preventDefault() // Prevent default form submission
 
-    const updateEmailField = $('#update-email-field')
-    const emailField = $('#email')
-    const updateEmailSubmit = $('#update-email-submit')
-
-    if(updateEmailField.val !== emailField.val()) {
-      if(emailField.val() === ''){
-        displayError('Invalid email!')
-        return
-      }
-
-      updateEmailField.val(emailField)
-      updateEmailSubmit.click()
-    }
-
     let formData = new FormData(event.target)
 
     // Validate that the file input has a file
@@ -115,6 +117,8 @@ Webflow.push(function () {
       if (xhr.status === 200) {
         let data = JSON.parse(xhr.responseText)
         console.log('Success:', data)
+
+        updateMemberEmail()
       } else {
         displayError(errorMessage)
       }
