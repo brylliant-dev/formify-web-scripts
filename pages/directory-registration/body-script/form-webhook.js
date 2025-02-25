@@ -59,6 +59,20 @@ Webflow.push(function () {
   function triggerSubmit(event) {
     event.preventDefault() // Prevent default form submission
 
+    const updateEmailField = $('#update-email-field')
+    const emailField = $('#email')
+    const updateEmailSubmit = $('#update-email-submit')
+
+    if(updateEmailField.val !== emailField.val()) {
+      if(emailField.val() === ''){
+        displayError('Invalid email!')
+        return
+      }
+
+      updateEmailField.val(emailField)
+      updateEmailSubmit.click()
+    }
+
     let formData = new FormData(event.target)
 
     // Validate that the file input has a file
