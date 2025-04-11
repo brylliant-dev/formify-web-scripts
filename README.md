@@ -22,9 +22,6 @@ This repository contains comprehensive documentation for the Formify application
 formify/
 ├── pages/                    # Web pages and their JavaScript files
 ├── templates/               # Template files and shared components
-├── diagrams/               # PUML diagrams and generated images
-│   ├── frontend/          # Frontend workflow diagrams
-│   └── backend/           # Backend workflow diagrams
 └── docs/                  # Documentation files
     ├── formify-pages-documentation.md
     └── formify-make-documentation.md
